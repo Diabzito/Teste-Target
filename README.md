@@ -1,5 +1,4 @@
 # Teste-Target (Arquivo 1)
-# Dados fornecidos
 dados = [
     {"dia": 1, "valor": 22174.1664},
     {"dia": 2, "valor": 24537.6698},
@@ -33,7 +32,6 @@ dados = [
     {"dia": 30, "valor": 8414.61}
 ]
 
-# Funções para processar os dados
 def calcular_soma(dados):
     return sum(item["valor"] for item in dados)
 
@@ -47,12 +45,10 @@ def encontrar_maior_menor(dados):
         return None, None
     return max(valores), min(valores)
 
-# Cálculos
 soma_total = calcular_soma(dados)
 media_total = calcular_media(dados)
 maior_valor, menor_valor = encontrar_maior_menor(dados)
 
-# Resultados
 print(f"Soma Total: {soma_total:.2f}")
 print(f"Média dos Valores: {media_total:.2f}")
 print(f"Maior Valor: {maior_valor:.2f}")
@@ -62,7 +58,6 @@ print(f"Menor Valor: {menor_valor:.2f}")
 # Arquivo 2
 import xml.etree.ElementTree as ET
 
-# Dados em formato XML
 xml_data = """
 <root>
 <row>
@@ -188,10 +183,8 @@ xml_data = """
 </root>
 """
 
-# Parse XML
 root = ET.fromstring(xml_data)
 
-# Funções para processar os dados
 def processar_dados(xml_root):
     valores = []
     for row in xml_root.findall('row'):
@@ -212,13 +205,11 @@ def encontrar_maior_menor(valores):
         return None, None
     return max(valores_positivos), min(valores_positivos)
 
-# Processar e calcular
 valores = processar_dados(root)
 soma_total = calcular_soma(valores)
 media_total = calcular_media(valores)
 maior_valor, menor_valor = encontrar_maior_menor(valores)
 
-# Resultados
 print(f"Soma Total: {soma_total:.2f}")
 print(f"Média dos Valores: {media_total:.2f}")
 print(f"Maior Valor: {maior_valor:.2f}")
