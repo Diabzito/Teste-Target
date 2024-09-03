@@ -1,4 +1,4 @@
-# Teste-Target
+# Teste-Target (Arquivo 1)
 # Dados fornecidos
 dados = [
     {"dia": 1, "valor": 22174.1664},
@@ -57,3 +57,170 @@ print(f"Soma Total: {soma_total:.2f}")
 print(f"Média dos Valores: {media_total:.2f}")
 print(f"Maior Valor: {maior_valor:.2f}")
 print(f"Menor Valor: {menor_valor:.2f}")
+
+
+# Arquivo 2
+import xml.etree.ElementTree as ET
+
+# Dados em formato XML
+xml_data = """
+<root>
+<row>
+  <dia>1</dia>
+  <valor>31490.7866</valor>
+</row>
+<row>
+  <dia>2</dia>
+  <valor>37277.9400</valor>
+</row>
+<row>
+  <dia>3</dia>
+  <valor>37708.4303</valor>
+</row>
+<row>
+  <dia>4</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>5</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>6</dia>
+  <valor>17934.2269</valor>
+</row>
+<row>
+  <dia>7</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>8</dia>
+  <valor>6965.1262</valor>
+</row>
+<row>
+  <dia>9</dia>
+  <valor>24390.9374</valor>
+</row>
+<row>
+  <dia>10</dia>
+  <valor>14279.6481</valor>
+</row>
+<row>
+  <dia>11</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>12</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>13</dia>
+  <valor>39807.6622</valor>
+</row>
+<row>
+  <dia>14</dia>
+  <valor>27261.6304</valor>
+</row>
+<row>
+  <dia>15</dia>
+  <valor>39775.6434</valor>
+</row>
+<row>
+  <dia>16</dia>
+  <valor>29797.6232</valor>
+</row>
+<row>
+  <dia>17</dia>
+  <valor>17216.5017</valor>
+</row>
+<row>
+  <dia>18</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>19</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>20</dia>
+  <valor>12974.2000</valor>
+</row>
+<row>
+  <dia>21</dia>
+  <valor>28490.9861</valor>
+</row>
+<row>
+  <dia>22</dia>
+  <valor>8748.0937</valor>
+</row>
+<row>
+  <dia>23</dia>
+  <valor>8889.0023</valor>
+</row>
+<row>
+  <dia>24</dia>
+  <valor>17767.5583</valor>
+</row>
+<row>
+  <dia>25</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>26</dia>
+  <valor>0.0000</valor>
+</row>
+<row>
+  <dia>27</dia>
+  <valor>3071.3283</valor>
+</row>
+<row>
+  <dia>28</dia>
+  <valor>48275.2994</valor>
+</row>
+<row>
+  <dia>29</dia>
+  <valor>10299.6761</valor>
+</row>
+<row>
+  <dia>30</dia>
+  <valor>39874.1073</valor>
+</row>
+</root>
+"""
+
+# Parse XML
+root = ET.fromstring(xml_data)
+
+# Funções para processar os dados
+def processar_dados(xml_root):
+    valores = []
+    for row in xml_root.findall('row'):
+        valor = float(row.find('valor').text)
+        valores.append(valor)
+    return valores
+
+def calcular_soma(valores):
+    return sum(valores)
+
+def calcular_media(valores):
+    valores_positivos = [v for v in valores if v > 0]
+    return sum(valores_positivos) / len(valores_positivos) if valores_positivos else 0
+
+def encontrar_maior_menor(valores):
+    valores_positivos = [v for v in valores if v > 0]
+    if not valores_positivos:
+        return None, None
+    return max(valores_positivos), min(valores_positivos)
+
+# Processar e calcular
+valores = processar_dados(root)
+soma_total = calcular_soma(valores)
+media_total = calcular_media(valores)
+maior_valor, menor_valor = encontrar_maior_menor(valores)
+
+# Resultados
+print(f"Soma Total: {soma_total:.2f}")
+print(f"Média dos Valores: {media_total:.2f}")
+print(f"Maior Valor: {maior_valor:.2f}")
+print(f"Menor Valor: {menor_valor:.2f}")
+
